@@ -1,0 +1,60 @@
+  [4;36;1mSQL (4.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (61.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (13.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090613205313)
+  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090613205313')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("topics")[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-06-13 13:54:43) [GET]
+  [4;36;1mTopic Load (1.0ms)[0m   [0;1mSELECT * FROM "topics" [0m
+Rendering template within layouts/topics
+Rendering topics/index
+Completed in 6356ms (View: 6330, DB: 1) | 200 OK [http://localhost/topics]
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-06-13 13:56:21) [GET]
+  [4;36;1mTopic Load (2.0ms)[0m   [0;1mSELECT * FROM "topics" [0m
+Rendering template within layouts/topics
+Rendering topics/index
+Completed in 82ms (View: 57, DB: 2) | 200 OK [http://localhost/topics]
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2009-06-13 13:56:25) [GET]
+Rendering template within layouts/topics
+Rendering topics/new
+Completed in 6627ms (View: 6602, DB: 0) | 200 OK [http://localhost/topics/new]
+
+
+Processing TopicsController#create (for 127.0.0.1 at 2009-06-13 13:57:00) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"UbGJ04K52QnKjcPR0tbA/4gYe/E/D/k+jGOwYiSMnPs=", "topic"=>{"title"=>"coriander cultivation", "description"=>"figuring out how to grow cilantro without the damn thing bolting in two seconds."}}
+  [4;35;1mTopic Create (4.0ms)[0m   [0mINSERT INTO "topics" ("updated_at", "title", "description", "created_at") VALUES('2009-06-13 20:57:00', 'coriander cultivation', 'figuring out how to grow cilantro without the damn thing bolting in two seconds.', '2009-06-13 20:57:00')[0m
+Redirected to http://localhost:3000/topics/1
+Completed in 267ms (DB: 4) | 302 Found [http://localhost/topics]
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-06-13 13:57:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (1.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/topics
+Rendering topics/show
+Completed in 50ms (View: 23, DB: 1) | 200 OK [http://localhost/topics/1]
